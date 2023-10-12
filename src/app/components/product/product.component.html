@@ -18,17 +18,23 @@
             <th>Fiyat</th>
             <th>KDV'li Fiyat</th>
             <th>Stok Adedi</th>
+            <th> </th>
         </tr>
     </thead>
-    <tr *ngFor="let product of products | filterPipe:filterText">
+    <tbody>  <!--bu table body demek tasarımsal-->
+
+        <tr *ngFor="let product of products | filterPipe:filterText">
         
-        <td>{{product.productId}}</td>
-        <td>{{product.productName |uppercase }}</td>
-        <td>{{product.categoryId}}</td>
-        <td>{{product.unitPrice |currency }}</td>
-        <td>{{product.unitPrice |vatAdded:10  | currency }}</td>
-        <td>{{product.unitInStock}}</td>
+            <td>{{product.productId}}</td>
+            <td>{{product.productName |uppercase }}</td>
+            <td>{{product.categoryId}}</td>
+            <td>{{product.unitPrice |currency }}</td>
+            <td>{{product.unitPrice |vatAdded:10  | currency }}</td>
+            <td>{{product.unitInStock}}</td>
+            <td> <button (click)="addToCart(product)" 
+                class=" btn btn-danger">Sepete Ekle</button></td>      <!--sepete ekle butonu koyduk -->
         
+        </tr>
+    </tbody>
     
-    </tr>
 </table>
